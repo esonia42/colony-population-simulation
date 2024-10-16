@@ -1,2 +1,2 @@
-names==0.3.0
-matplotlib.pyplot==3.9.2
+names
+matplotlib
