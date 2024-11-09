@@ -1,35 +1,23 @@
 import names
 import random
-# from person import Person
+from person import Person
+from person import Colony
 
 start_year = 2397
 current_year = start_year
 
-class Person:
-    def __init__(self):
-        self.name = names.get_full_name()
-        self.age = 0
-        self.sex = random.randint(0, 2)
-        self.infected = False
-        self.colony = 1
+colony1 = Colony(name='Ololo')
+colony2 = Colony(name='Azaza')
+colonies = [colony1, colony2]
 
-    def age(self):
-        pass
-    def give_birth(self):
-        pass
-    def marry(self, person):
-        pass
-    def kill(self, person):
-        pass
-    def get_infected(self):
-        pass
-    def die(self):
-        pass
-
+for colony in colonies:
+    for i in range(100):
+        new_person = Person(colony)
 
 while True:
     current_year += 1
-    for i in range(500):
-        new_person = Person()
-        print(new_person.name)
+    for colony in colonies:
+        for i in range(int(len(colony.population) * colony.birth_rate)):
+            new_person = Person(colony)
+        print(len(colony.population))
 
