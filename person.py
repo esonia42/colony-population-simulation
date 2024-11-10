@@ -9,7 +9,6 @@ class Person:
         self.sex = random.randint(0, 2)
         self.infected = False
         self.colony = colony
-
         self.id = uuid.uuid4()
         self.colony.population[self.id] = self.name
 
@@ -45,3 +44,8 @@ class Colony:
 
     def ducks_count(self):
         print(self.ducks)
+
+class Disease:
+    def __init__(self, name, contagiousness):
+        self.name = name
+        self.contagiousness = contagiousness

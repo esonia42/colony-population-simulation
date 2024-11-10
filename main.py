@@ -19,5 +19,6 @@ while True:
     for colony in colonies:
         for i in range(int(len(colony.population) * colony.birth_rate)):
             new_person = Person(colony)
+        for person in colony.population:
+            person.age()
         print(len(colony.population))
-
