@@ -32,4 +32,12 @@ while True:
                 if person.age > 20:
                     if random.random() < person.pregnancy_chance:
                         person.give_birth()
+            if random.random() < disease1.contagiousness:
+                person.infected = True
+            if random.random() < disease2.contagiousness:
+                person.infected = True
+            if random.random() < disease1.death_rate:
+                person.die()
+            if random.random() < disease2.death_rate:
+                person.die()
         print(len(colony.population))
