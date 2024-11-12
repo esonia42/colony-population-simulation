@@ -12,23 +12,33 @@ colony1 = Colony(name='Ololo')
 colony2 = Colony(name='Azaza')
 colonies = [colony1, colony2]
 
-disease1 = Disease('chickenpox', 0.8, 0.01, 'permanent')
-disease2 = Disease('tuberculosis', 0.02, 0.4, None)
+disease1 = Disease('chickenpox', 0.8, 0.01, 'virus','permanent')
+disease2 = Disease('tuberculosis', 0.02, 0.4, '',None)
 disease_list = [disease1, disease2]
 
 
 def process_diseases(person):
     for disease in disease_list:
-        # flow for already infeced before
+        # flow for already infected before
         if disease in person.infected_with.keys():
-            if disease.immunity == None:
-                # no immunity
-                pass
-            else:
-                pass
-                # disease has immunity
-
+            match person.infected_with[disease]:
+                case 'infected':
+                    if random.random() < disease.death_rate:
+                        people_to_delete[person.id] = person
+                case 'immune':
+                    pass
         # flow for newcomers
+        if disease not in person.infected_with.keys():
+            #roll for contagiousness
+            if random.random() < disease.contagiousness:
+                person.infected_with[disease] = 'infected'
+                #roll for death rate
+                if disease in person.infected_with.keys() and random.random() < disease.death_rate:
+                    people_to_delete[person.id] = person
+                #immunity for survivors
+                elif random.random() > disease.death_rate:
+                    person.infected_with[disease] = 'immune'
+
 
 def process_death(person):
     person.death_chance += 0.0007
