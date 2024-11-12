@@ -6,11 +6,11 @@ import uuid
 '''
 
 class Person:
-    def __init__(self, colony):
+    def __init__(self, colony, age=0):
         self.name = names.get_full_name()
-        self.age = 0
+        self.age = age
         self.sex = random.randint(0, 2)
-        self.infected = False
+        self.infected_with = {}
         self.colony = colony
         self.id = uuid.uuid4()
         self.colony.population[self.id] = self
@@ -30,8 +30,7 @@ class Person:
         self.infected = True
 
     def give_birth(self):
-        pass
-        '''new_person = Person(self.colony)'''
+        Person(self.colony)
 
     def die(self):
         self.colony.population.pop(self.id)
@@ -54,7 +53,8 @@ class Colony:
 
 
 class Disease:
-    def __init__(self, name, contagiousness, death_rate):
+    def __init__(self, name, contagiousness, death_rate, immunity):
         self.name = name
         self.contagiousness = contagiousness
         self.death_rate = death_rate
+        self.immunity = immunity
