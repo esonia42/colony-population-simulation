@@ -2,8 +2,8 @@ import names
 import random
 import uuid
 
-from main import new_person
-
+'''from main import new_person
+'''
 
 class Person:
     def __init__(self, colony):
@@ -13,11 +13,11 @@ class Person:
         self.infected = False
         self.colony = colony
         self.id = uuid.uuid4()
-        self.colony.population[self.id] = self.name
+        self.colony.population[self.id] = self
         self.death_chance = 0.0001
         self.pregnancy_chance = 0.5
 
-    def age(self):
+    def to_age(self):
         self.age+=1
 
     def marry(self, person):
@@ -30,10 +30,12 @@ class Person:
         self.infected = True
 
     def give_birth(self):
-        baby = Person(self.colony)
+        pass
+        '''new_person = Person(self.colony)'''
 
     def die(self):
-        self.colony.population.popitem(self)
+        self.colony.population.pop(self.id)
+
 
 class Colony:
     def __init__(self, name):
@@ -45,10 +47,11 @@ class Colony:
         self.mortality_rate = random.random()
 
     def people_count(self):
-        pass
+        print(len(self.population))
 
     def ducks_count(self):
         print(self.ducks)
+
 
 class Disease:
     def __init__(self, name, contagiousness, death_rate):
