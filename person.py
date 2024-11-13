@@ -2,15 +2,13 @@ import names
 import random
 import uuid
 
-'''from main import new_person
-'''
 
 class Person:
     def __init__(self, colony, age=0):
         self.name = names.get_full_name()
         self.age = age
         self.sex = random.randint(0, 2)
-        self.infected_with = {}
+        self.carrying_diseases = {}
         self.colony = colony
         self.id = uuid.uuid4()
         self.colony.population[self.id] = self
@@ -26,36 +24,28 @@ class Person:
     def kill(self, person):
         person.die(person)
 
-    def get_infected(self):
-        self.infected = True
-
     def give_birth(self):
         Person(self.colony)
+
+    def process_birth(self, people_to_give_birth):
+        if self.sex == 1 or self.sex == 2:
+            if self.age > 20:
+                if random.random() < self.pregnancy_chance:
+                    people_to_give_birth.append(self)
 
     def die(self):
         self.colony.population.pop(self.id)
 
+    def process_death(self, grave_yard):
+        self.death_chance += 0.0007
+        if random.random() < self.death_chance:
+            grave_yard[self.id] = self
 
-class Colony:
-    def __init__(self, name):
-        self.name = name
-        self.ducks = 20
-        self.population = {}
-        #percent of population
-        self.birth_rate = random.random()
-        self.mortality_rate = random.random()
-
-    def people_count(self):
-        print(len(self.population))
-
-    def ducks_count(self):
-        print(self.ducks)
-
-
-class Disease:
-    def __init__(self, name, contagiousness, death_rate, disease_type, immunity):
-        self.name = name
-        self.contagiousness = contagiousness
-        self.death_rate = death_rate
-        self.disease_type = disease_type
-        self.immunity = immunity
+    # def process_death(self, colony):
+    #     grave_yard = []
+    #     for person in colony.population.values():
+    #         person.death_chance += 0.0007
+    #         if random.random() < self.death_chance:
+    #             grave_yard.append(self.id)
+    #     for id in grave_yard:
+    #         colony.population.pop(id)
