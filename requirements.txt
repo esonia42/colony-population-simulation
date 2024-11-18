@@ -1,4 +1,2 @@
 names
 matplotlib
-random
-uuid
