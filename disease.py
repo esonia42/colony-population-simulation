@@ -7,4 +7,3 @@ class Disease:
         self.death_rate = death_rate
         self.disease_type = disease_type
         self.immunity = immunity
-
