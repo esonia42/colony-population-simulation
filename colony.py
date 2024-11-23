@@ -14,9 +14,6 @@ class Colony:
     def people_count(self):
         print(len(self.population))
 
-    def ducks_count(self):
-        print(self.ducks)
-
     def process_diseases(self, person, grave_yard):
         for disease in self.diseases:
             # flow for already infected before

@@ -14,6 +14,7 @@ class Person:
         self.colony.population[self.id] = self
         self.death_chance = 0.0001
         self.pregnancy_chance = 0.5
+#        self.likes_ducks = random.choices(['si', 'no'])
 
     def to_age(self):
         self.age+=1
@@ -40,6 +41,16 @@ class Person:
         self.death_chance += 0.0007
         if random.random() < self.death_chance:
             grave_yard[self.id] = self
+
+    #def feed_ducks(self):
+    #    food = random.choices(['peas', 'bread'], weights=[0.7, 0.5])
+    #    if self.likes_ducks == 'si':
+    #        if food == 'peas':
+    #            colony.ducks += 1
+    #        elif food == 'bread':
+    #            colony.ducks -= 1
+    #    elif self.likes_ducks == 'no':
+    #        pass
 
     # def process_death(self, colony):
     #     grave_yard = []
