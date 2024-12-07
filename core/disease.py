@@ -1,5 +1,3 @@
-import random
-
 class Disease:
     def __init__(self, name, contagiousness, death_rate, disease_type, immunity):
         self.name = name

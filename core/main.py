@@ -26,7 +26,7 @@ while True:
 
         for person in colony.population.values():
             person.to_age()
-#            person.feed_ducks()
+            person.feed_ducks()
             person.process_birth(people_to_give_birth)
             colony.process_diseases(person, grave_yard)
             person.process_death(grave_yard)
@@ -38,4 +38,4 @@ while True:
             parent.give_birth()
 
         print(len(colony.population))
-#        print(colony.ducks)
+        print(colony.ducks)
