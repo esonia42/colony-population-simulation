@@ -1,8 +1,20 @@
 name: Build tag push
 
 on:
-  push:
-    branches: ['ducks']
+  [workflow_dispatch]
+#  push:
+#    branches: ['ducks']
 
 jobs:
-  
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: build
+        run:
+          docker build . -t dzonia/colony-simulation:latest
+      - name: push
+        run:
+          docker login -u dzonia -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push dzonia/colony-simulation:latest
