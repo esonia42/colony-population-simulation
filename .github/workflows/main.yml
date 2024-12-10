@@ -12,10 +12,10 @@ jobs:
         uses: actions/checkout@v3
       - name: build
         run:
-          docker build -t dzonia/colony-simulation .
+          docker build -t dzonia/colony-simulation:latest .
       - name: login
         run:
           docker login -u dzonia -p ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: push
         run:
-          docker push dzonia/colony-simulation
+          docker push dzonia/colony-simulation:latest
