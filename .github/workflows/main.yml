@@ -1,9 +1,8 @@
 name: Build tag push
 
 on:
-  [workflow_dispatch]
-#  push:
-#    branches: ['ducks']
+  push:
+    branches: ['ducks']
 
 jobs:
   build_and_push:
