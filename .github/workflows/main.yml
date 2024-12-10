@@ -1,0 +1,8 @@
+name: Build tag push
+
+on:
+  push:
+    branches: ['ducks']
+
+jobs:
+  
