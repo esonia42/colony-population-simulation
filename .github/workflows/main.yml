@@ -2,7 +2,7 @@ name: Build tag push
 
 on:
   push:
-    branches: ['ducks']
+    branches: ['main']
 
 jobs:
   build_and_push:
