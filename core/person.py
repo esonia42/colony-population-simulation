@@ -42,12 +42,12 @@ class Person:
         if random.random() < self.death_chance:
             grave_yard[self.id] = self
 
-    # def feed_ducks(self):
-    #     food = random.choices(['peas', 'bread'], weights=[0.7, 0.5])
-    #     if self.likes_ducks == 'si':
-    #         if food == 'peas':
-    #             colony.ducks += 1
-    #         elif food == 'bread':
-    #             colony.ducks -= 1
-    #     elif self.likes_ducks == 'no':
-    #         pass
+    #def feed_ducks(self):
+    #    food = random.choices(['peas', 'bread'], weights=[0.7, 0.5])
+    #    if self.likes_ducks == 'si':
+    #        if food == 'peas':
+    #            colony.ducks += 1
+    #        elif food == 'bread':
+    #            colony.ducks -= 1
+    #    elif self.likes_ducks == 'no':
+    #        pass

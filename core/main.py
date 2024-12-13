@@ -37,4 +37,4 @@ while True:
             parent.give_birth()
 
         print(len(colony.population))
-        print(colony.ducks)
+#        print(colony.ducks)
