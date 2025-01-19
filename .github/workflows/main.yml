@@ -2,7 +2,7 @@ name: Build tag push
 
 on:
   push:
-    branches: ['ducks']
+    branches: ['main']
 
 jobs:
   build_and_push:
@@ -19,3 +19,17 @@ jobs:
       - name: push
         run:
           docker push dzonia/colony-simulation:latest
+  pull_and_run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            key: ${{ secrets.KEY }}
+            port: 22
+            script: |
+              docker stop colony-simulation:latest
+              docker pull dzonia/colony-simulation:latest
+              docker run colony-simulation:latest
