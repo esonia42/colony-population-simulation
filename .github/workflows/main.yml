@@ -31,6 +31,6 @@ jobs:
             password: ${{ secrets.KEY }}
             port: 22
             script: |
-              docker stop colony-simulation:latest
+              docker stop $(docker ps -a -q)
               docker pull dzonia/colony-simulation:latest
-              docker run colony-simulation:latest 
+              docker run dzonia/colony-simulation:latest
