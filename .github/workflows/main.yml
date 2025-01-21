@@ -21,6 +21,7 @@ jobs:
           docker push dzonia/colony-simulation:latest
   pull_and_run:
     runs-on: ubuntu-latest
+    needs: build_and_push
     steps:
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
