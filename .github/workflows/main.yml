@@ -32,4 +32,4 @@ jobs:
             script: |
               docker stop colony-simulation:latest
               docker pull dzonia/colony-simulation:latest
-              docker run colony-simulation:latest
+              docker run colony-simulation:latest 
