@@ -33,4 +33,4 @@ jobs:
             script: |
               docker stop $(docker ps -a -q)
               docker pull dzonia/colony-simulation:latest
-              docker run dzonia/colony-simulation:latest
+              docker run dzonia/colony-simulation:latest -d
