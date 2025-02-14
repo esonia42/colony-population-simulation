@@ -33,4 +33,8 @@ jobs:
             script: |
               docker stop $(docker ps -a -q)
               docker pull dzonia/colony-simulation:latest
-              docker run dzonia/colony-simulation:latest -d
+      - name: run
+        uses: addnab/docker-run-action@v3
+        with:
+            image: colony-simulation:latest
+            run: docker run -d dzonia/colony-simulation:latest
