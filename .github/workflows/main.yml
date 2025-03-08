@@ -32,10 +32,11 @@ jobs:
             port: 22
             script: |
               docker stop $(docker ps -a -q)
+              docker rm $(docker ps -a -q)
               docker pull dzonia/colony-simulation:latest
+              docker run -d --name colony_sim dzonia/colony-simulation:latest
       - name: run
         uses: addnab/docker-run-action@v3
         with:
             image: dzonia/colony-simulation:latest
             options: "-d"
-            run: docker run -d --name colony_sim dzonia/colony-simulation:latest
