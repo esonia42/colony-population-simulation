@@ -38,4 +38,4 @@ jobs:
         with:
             image: dzonia/colony-simulation:latest
             options: "-d"
-            run: docker run -d -it dzonia/colony-simulation:latest | docker ps -a
+            run: docker run -d --name colony_sim dzonia/colony-simulation:latest
