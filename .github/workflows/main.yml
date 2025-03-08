@@ -37,4 +37,4 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
             image: dzonia/colony-simulation:latest
-            run: docker run -d dzonia/colony-simulation:latest
+            run: echo "hello world"
