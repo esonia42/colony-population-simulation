@@ -2,6 +2,7 @@ import names
 import random
 import uuid
 
+from db import insert_persons, remove_persons
 
 class Person:
     def __init__(self, colony, age=0):
@@ -12,6 +13,7 @@ class Person:
         self.colony = colony
         self.id = uuid.uuid4()
         self.colony.population[self.id] = self
+        insert_persons(self)
         self.death_chance = 0.0001
         self.pregnancy_chance = 0.5
 #        self.likes_ducks = random.choices(['si', 'no'])
@@ -36,6 +38,7 @@ class Person:
 
     def die(self):
         self.colony.population.pop(self.id)
+        remove_persons(self)
 
     def process_death(self, grave_yard):
         self.death_chance += 0.0007
