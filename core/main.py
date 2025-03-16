@@ -1,9 +1,12 @@
 import random
 
+from db import delete
 from person import Person
 from colony import Colony
 from disease import Disease
 
+
+delete()
 start_year = 2397
 current_year = start_year
 
