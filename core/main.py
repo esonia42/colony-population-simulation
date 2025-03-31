@@ -1,6 +1,6 @@
 import random
 
-from db import delete
+from psycopg_db import delete
 from person import Person
 from colony import Colony
 from disease import Disease

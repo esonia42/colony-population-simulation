@@ -4,6 +4,11 @@ import psycopg
 conn = psycopg.connect("host=localhost port=5432 dbname=postgres user=postgres password=postgres connect_timeout=10 sslmode=prefer")
 conn.commit()
 
+def get_conn():
+    conn = psycopg.connect("host=localhost port=5432 dbname=postgres user=postgres password=postgres connect_timeout=10 sslmode=prefer")
+    conn.commit()
+    return conn
+
 def insert_persons(person):
     cur = conn.cursor()
     cur.execute(
@@ -30,39 +35,26 @@ def delete():
     conn.commit()
 
 
-
-def get_one_person():
-    cur = conn.cursor()
+def get_one_person(connection):
+    cur = connection.cursor()
     cur.execute("SELECT * FROM persons;")
     cur.fetchone()
     conn.commit()
 
 
-def get_five_hundred_persons():
+def get_multiple_persons(n):
     cur = conn.cursor()
     cur.execute("SELECT * FROM persons;")
-    cur.fetchmany(500)
+    cur.fetchmany(n)
     conn.commit()
 
 
-import time
+def loop_over_tasks(number_of_tasks: int):
+    connection = get_conn()
+    for i in range(number_of_tasks):
+        get_one_person(connection)
+    print(number_of_tasks, " finished")
 
-t1 = time.perf_counter(), time.process_time()
-
-for i in range(500):
-    get_one_person()
-
-t2 = time.perf_counter(), time.process_time()
-
-print(f"one person real time: {t2[0] - t1[0]:.2f} seconds")
-print(f"one person CPU time: {t2[1] - t1[1]:.2f} seconds")
-
-
-t1 = time.perf_counter(), time.process_time()
-
-get_five_hundred_persons()
-
-t2 = time.perf_counter(), time.process_time()
-
-print(f"500 persons real time: {t2[0] - t1[0]:.2f} seconds")
-print(f"500 persons CPU time: {t2[1] - t1[1]:.2f} seconds")
+'''with conn.cursor() as cursor:
+    cursor.execute("EXPLAIN ANALYZE SELECT * FROM persons WHERE column = %s", ("person_id",))
+    print(cursor.fetchall())  # Check the query plan'''

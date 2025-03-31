@@ -2,7 +2,7 @@ import names
 import random
 import uuid
 
-from db import insert_persons, remove_persons
+from psycopg_db import insert_persons, remove_persons
 
 class Person:
     def __init__(self, colony, age=0):
