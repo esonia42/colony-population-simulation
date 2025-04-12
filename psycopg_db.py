@@ -57,9 +57,9 @@ class DbInterface:
     def close_pool(self):
         self.pool.close()
 
-class MegaDbInterface(DbInterface):
-    def extra_function(self):
-        pass
+#class MegaDbInterface(DbInterface):
+#    def extra_function(self):
+#        pass
 
-megadb = MegaDbInterface()
-megadb.get_multiple_persons()
+#megadb = MegaDbInterface()
+#megadb.get_multiple_persons()

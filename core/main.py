@@ -1,12 +1,11 @@
 import random
 
-from psycopg_db import delete
+from psycopg_db import DbInterface
 from person import Person
 from colony import Colony
 from disease import Disease
 
-
-delete()
+#db_interface.delete()
 start_year = 2397
 current_year = start_year
 
