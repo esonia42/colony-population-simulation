@@ -1,9 +1,18 @@
 import random
+from sqlalchemy import create_engine, Column, Integer, String, Uuid, Float
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 from psycopg_db import DbInterface
 from person import Person
 from colony import Colony
 from disease import Disease
+
+
+engine = create_engine("postgresql+psycopg://postgres:postgres@localhost:5432/postgres")
+Base = declarative_base()
+
+Session = sessionmaker(bind=engine)
+session = Session()
 
 #db_interface.delete()
 start_year = 2397
