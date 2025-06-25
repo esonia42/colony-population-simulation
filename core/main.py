@@ -8,11 +8,11 @@ from colony import Colony
 from disease import Disease
 
 
-engine = create_engine("postgresql+psycopg://postgres:postgres@localhost:5432/postgres")
-Base = declarative_base()
-
-Session = sessionmaker(bind=engine)
-session = Session()
+# engine = create_engine("postgresql+psycopg://postgres:postgres@localhost:5432/postgres")
+# Base = declarative_base()
+#
+# Session = sessionmaker(bind=engine)
+# session = Session()
 
 #db_interface.delete()
 start_year = 2397
