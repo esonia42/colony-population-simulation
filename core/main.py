@@ -1,6 +1,7 @@
 import random
 from sqlalchemy import create_engine, Column, Integer, String, Uuid, Float
 from sqlalchemy.orm import declarative_base, sessionmaker
+from flask import Flask
 
 from psycopg_db import DbInterface
 from person import Person
@@ -13,8 +14,18 @@ from disease import Disease
 #
 # Session = sessionmaker(bind=engine)
 # session = Session()
-
 #db_interface.delete()
+
+app = Flask(__name__)
+
+@app.route('/hello/<name>')
+def hello_name(name):
+   return 'Hello %s!' % name
+
+if __name__ == '__main__':
+   app.run()
+
+
 start_year = 2397
 current_year = start_year
 
@@ -49,3 +60,4 @@ while True:
 
         print(len(colony.population))
 #        print(colony.ducks)
+
