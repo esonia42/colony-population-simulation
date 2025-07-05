@@ -2,10 +2,8 @@ import names
 import random
 import uuid
 
-from psycopg_db import DbInterface
 from sql_alchemy import add, delete
 
-#db_interface = DbInterface()
 
 class Person:
     def __init__(self, colony, age=0):
@@ -43,19 +41,9 @@ class Person:
     def die(self):
         self.colony.population.pop(self.id)
         delete(self)
-    #        db_interface.remove_persons(self)
 
     def process_death(self, grave_yard):
         self.death_chance += 0.0007
         if random.random() < self.death_chance:
             grave_yard[self.id] = self
 
-    #def feed_ducks(self):
-    #    food = random.choices(['peas', 'bread'], weights=[0.7, 0.5])
-    #    if self.likes_ducks == 'si':
-    #        if food == 'peas':
-    #            colony.ducks += 1
-    #        elif food == 'bread':
-    #            colony.ducks -= 1
-    #    elif self.likes_ducks == 'no':
-    #        pass
