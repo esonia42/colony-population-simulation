@@ -54,12 +54,11 @@ def progress_time():
 
 @app.route('/people/<n>', methods=["GET"])
 def people_count(n):
-    if n == '1':
-        return "Colony 1: " + str(len(colony1.population))
-    elif n == '2':
-        return "Colony 2: " + str(len(colony2.population))
+    if int(n) <= len(colonies):
+        colony = colonies[int(n) - 1]
+        return "Colony " + n + ": " + str(len(colony.population))
     else:
-        return "no such colony yet :("
+        return "No such colony"
 
 
 if __name__ == "__main__":
